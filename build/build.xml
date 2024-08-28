@@ -1,0 +1,46 @@
+<project name="information_store_parser" default="compile">
+
+  <property name="pack.name" value="information_store_parser"/>
+  <property name="pack.version" value="5-0-0"/>
+  
+  <!-- Attention! pack.dir have to be under tmp-dir because the actual build is done there --> 
+  <property name="pack.dir" value="/vobs/eniq/design/plat/adapters/dev/information_store_parser"/>
+
+  <!-- ENIQ Jars -->
+  <property name="eniq.common.dir" value="/vobs/eniq/design/plat/common_utilities/build/common_utilities"/>
+  <property name="eniq.parser.dir" value="/vobs/eniq/design/plat/adapters/build/parser"/>
+  <property name="eniq.repository.dir" value="/vobs/eniq/design/plat/installer/build/repository"/>
+
+  <!-- 3PP Jars -->
+  <property name="3pp.xerces.dir" value="/vobs/eniq/3pp/apache/xerces_parser/v2_6_2/prod"/>
+
+  <target name="precompile"/>
+  
+  <target name="compile">
+    <mkdir dir="${pack.dir}/classes"/>
+    <javac srcdir="${pack.dir}/src" destdir="${pack.dir}/classes"
+           failonerror="true"
+           debug="off"
+           optimize="off" 
+           deprecation="off">
+      <classpath>
+        <pathelement path="${classpath}"/>
+		<fileset dir="${eniq.common.dir}">
+	    	<include name="**/*.jar"/>
+	    </fileset>
+		<fileset dir="${eniq.repository.dir}">
+	    	<include name="**/*.jar"/>
+	    </fileset>
+		<fileset dir="${eniq.parser.dir}">
+	    	<include name="**/*.jar"/>
+	    </fileset>
+		<fileset dir="${3pp.xerces.dir}">
+	    	<include name="**/*.jar"/>
+	    </fileset>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="postcompile"/>
+
+</project>

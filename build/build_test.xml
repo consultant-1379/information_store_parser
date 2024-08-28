@@ -1,0 +1,26 @@
+<project name="information_store_parser" default="test_all">
+    <property name="module.name" value="information_store_parser"/>
+    <property file="${user.home}/EniqBuild/BH/build.properties"/>
+    <property name="ant.common" value="${cc.base}/tools/ant_common"/>
+    <property file="${ant.common}/common.properties"/>
+    <property name="module.build" value="${module.information_store_parser.build}"/>
+    <property name="module.base" value="${module.information_store_parser.base}"/>
+    <property name="module.dependants" value="${module.information_store_parser.dependants}"/>
+    <import file="${ant.common}/common.xml"/>
+    <property name="tests.to.run" value="**/*Test.class"/>
+
+    <path id="information_store_parser.lib.classpath">
+        <path refid="plaform.lib.classpath"/>
+        <path location="${module.common_utilities.pkg}"/>
+        <path location="${module.engine.pkg}"/>
+        <path location="${module.repository.pkg}"/>
+        <path location="${module.alarm_module.pkg}"/>
+        <path location="${module.parser.pkg}"/>
+		<path location="${eniq_3pp.apache.xerces_parser.pkg}"/>
+    </path>
+    <path id="information_store_parser.test.classpath">
+        <path refid="platform.test.classpath"/>
+        <path refid="information_store_parser.lib.classpath"/>
+        <path location="${eniq.plat.base}/adapters/dev/information_store_parser/"/>
+    </path>
+</project>
